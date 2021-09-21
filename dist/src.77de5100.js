@@ -8956,7 +8956,29 @@ exports.default = _default;
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "box" }, [
-    _c("h1", [_vm._v(_vm._s(_vm.title))])
+    _c("h2", { attrs: { id: "title" } }, [_vm._v(_vm._s(_vm.title))]),
+    _vm._v(" "),
+    _c("input", {
+      staticClass: "form-control input-pass",
+      attrs: {
+        id: "input-pass",
+        type: "text",
+        name: "randomPassword",
+        placeholder: "password"
+      }
+    }),
+    _vm._v(" "),
+    _c(
+      "button",
+      { staticClass: "btn btn-primary", attrs: { id: "btn-copy" } },
+      [_vm._v("Copy")]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      { staticClass: "btn btn-primary", attrs: { id: "btn-generate" } },
+      [_vm._v("Generate")]
+    )
   ])
 }
 var staticRenderFns = []

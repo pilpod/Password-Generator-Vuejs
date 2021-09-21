@@ -1,6 +1,9 @@
 <template>
     <div class="box">
-        <h1>{{ title }}</h1>
+        <h2 id="title">{{ title }}</h2>
+        <input id="input-pass" class="form-control input-pass" type="text" name="randomPassword" placeholder="password">
+        <button id="btn-copy" class="btn btn-primary">Copy</button>
+        <button id="btn-generate" class="btn btn-primary">Generate</button>
     </div>
 </template>
 
