@@ -8579,7 +8579,52 @@ if (inBrowser) {
 
 var _default = Vue;
 exports.default = _default;
-},{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{}],"components/modules/characters.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getArrayChar = getArrayChar;
+
+function getArrayChar() {
+  var arrChar = [];
+
+  for (var i = 33; i <= 126; i++) {
+    var char = String.fromCharCode(i);
+    arrChar.push(char);
+  }
+
+  return arrChar;
+}
+},{}],"components/modules/generator.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _characters = require("./characters");
+
+function generatePass() {
+  var arrChars = (0, _characters.getArrayChar)();
+  var codeLength = 8;
+  var code = '';
+
+  while (codeLength > 0) {
+    var index = Math.floor(Math.random() * arrChars.length);
+    var char = arrChars[index];
+    code += char;
+    codeLength--;
+  }
+
+  return code;
+}
+
+var _default = generatePass;
+exports.default = _default;
+},{"./characters":"components/modules/characters.ts"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -8931,14 +8976,22 @@ exports.default = void 0;
 
 var _vue = _interopRequireDefault(require("vue"));
 
+var _generator = _interopRequireDefault(require("../modules/generator"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = _vue.default.extend({
   name: 'FormGenerator',
   data: function data() {
     return {
-      title: 'Password Generator'
+      title: 'Password Generator',
+      currentPassword: ''
     };
+  },
+  methods: {
+    renderCode: function renderCode() {
+      this.currentPassword = (0, _generator.default)();
+    }
   }
 });
 
@@ -8965,7 +9018,8 @@ exports.default = _default;
         type: "text",
         name: "randomPassword",
         placeholder: "password"
-      }
+      },
+      domProps: { value: _vm.currentPassword }
     }),
     _vm._v(" "),
     _c(
@@ -8976,8 +9030,16 @@ exports.default = _default;
     _vm._v(" "),
     _c(
       "button",
-      { staticClass: "btn btn-primary", attrs: { id: "btn-generate" } },
-      [_vm._v("Generate")]
+      {
+        staticClass: "btn btn-primary",
+        attrs: { id: "btn-generate" },
+        on: {
+          click: function($event) {
+            return _vm.renderCode()
+          }
+        }
+      },
+      [_vm._v("\n        Generate\n    ")]
     )
   ])
 }
@@ -9014,7 +9076,7 @@ render._withStripped = true
       
       }
     })();
-},{"vue":"../node_modules/vue/dist/vue.runtime.esm.js","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js"}],"App.vue":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.runtime.esm.js","../modules/generator":"components/modules/generator.ts","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js"}],"App.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
