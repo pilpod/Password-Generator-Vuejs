@@ -9,7 +9,10 @@
             placeholder="password"
             :value="currentPassword"
         />
-        <button id="btn-copy" class="btn btn-primary">Copy</button>
+        <span id="copied-message" v-show="showMessage">{{ message }}</span>
+        <button id="btn-copy" class="btn btn-primary" @click="copyPassword()">
+            Copy
+        </button>
         <button id="btn-generate" class="btn btn-primary" @click="renderCode()">
             Generate
         </button>
@@ -26,11 +29,27 @@ export default Vue.extend({
         return {
             title: 'Password Generator',
             currentPassword: '',
+            message: '',
+            showMessage: false,
         }
     },
     methods: {
         renderCode(): void {
             this.currentPassword = generatePass()
+        },
+        copyPassword(): void {
+            let password = navigator.clipboard.writeText(this.currentPassword)
+            password
+                .then(() => {
+                    console.log('Password copied to the clipboard')
+                    this.message = 'Password copied to the clipboard'
+                    this.showMessage = true
+                })
+                .catch((e) => {
+                    console.error(e)
+                    this.message =
+                        'An Error happened. Password was not copied to the clipboard'
+                })
         },
     },
 })

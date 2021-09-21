@@ -8985,12 +8985,27 @@ var _default = _vue.default.extend({
   data: function data() {
     return {
       title: 'Password Generator',
-      currentPassword: ''
+      currentPassword: '',
+      message: '',
+      showMessage: false
     };
   },
   methods: {
     renderCode: function renderCode() {
       this.currentPassword = (0, _generator.default)();
+    },
+    copyPassword: function copyPassword() {
+      var _this = this;
+
+      var password = navigator.clipboard.writeText(this.currentPassword);
+      password.then(function () {
+        console.log('Password copied to the clipboard');
+        _this.message = 'Password copied to the clipboard';
+        _this.showMessage = true;
+      }).catch(function (e) {
+        console.error(e);
+        _this.message = 'An Error happened. Password was not copied to the clipboard';
+      });
     }
   }
 });
@@ -9023,9 +9038,33 @@ exports.default = _default;
     }),
     _vm._v(" "),
     _c(
+      "span",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.showMessage,
+            expression: "showMessage"
+          }
+        ],
+        attrs: { id: "copied-message" }
+      },
+      [_vm._v(_vm._s(_vm.message))]
+    ),
+    _vm._v(" "),
+    _c(
       "button",
-      { staticClass: "btn btn-primary", attrs: { id: "btn-copy" } },
-      [_vm._v("Copy")]
+      {
+        staticClass: "btn btn-primary",
+        attrs: { id: "btn-copy" },
+        on: {
+          click: function($event) {
+            return _vm.copyPassword()
+          }
+        }
+      },
+      [_vm._v("\n        Copy\n    ")]
     ),
     _vm._v(" "),
     _c(
