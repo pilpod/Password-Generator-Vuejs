@@ -9115,7 +9115,88 @@ render._withStripped = true
       
       }
     })();
-},{"vue":"../node_modules/vue/dist/vue.runtime.esm.js","../modules/generator":"components/modules/generator.ts","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js"}],"App.vue":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.runtime.esm.js","../modules/generator":"components/modules/generator.ts","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js"}],"components/boxToPasteMessage/BoxToPasteMessage.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _vue = _interopRequireDefault(require("vue"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = _vue.default.extend({
+  name: 'BoxToPasteMessage',
+  data: function data() {
+    return {
+      message: 'Box to paste message'
+    };
+  }
+});
+
+exports.default = _default;
+        var $de64b5 = exports.default || module.exports;
+      
+      if (typeof $de64b5 === 'function') {
+        $de64b5 = $de64b5.options;
+      }
+    
+        /* template */
+        Object.assign($de64b5, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "box" }, [
+    _c("input", {
+      staticClass: "form-control",
+      attrs: {
+        id: "input-editable",
+        contenteditable: "text",
+        type: "text",
+        placeholder: "Paste the Code here"
+      }
+    }),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.message))])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$de64b5', $de64b5);
+          } else {
+            api.reload('$de64b5', $de64b5);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"vue":"../node_modules/vue/dist/vue.runtime.esm.js","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js"}],"App.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9127,6 +9208,8 @@ var _vue = _interopRequireDefault(require("vue"));
 
 var _FormGenerator = _interopRequireDefault(require("./components/genetator/FormGenerator.vue"));
 
+var _BoxToPasteMessage = _interopRequireDefault(require("./components/boxToPasteMessage/BoxToPasteMessage.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = _vue.default.extend({
@@ -9137,7 +9220,8 @@ var _default = _vue.default.extend({
     };
   },
   components: {
-    FormGenerator: _FormGenerator.default
+    'form-generator': _FormGenerator.default,
+    'box-to-paste': _BoxToPasteMessage.default
   }
 });
 
@@ -9154,7 +9238,7 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("FormGenerator")], 1)
+  return _c("div", [_c("form-generator"), _vm._v(" "), _c("box-to-paste")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -9189,7 +9273,7 @@ render._withStripped = true
       
       }
     })();
-},{"vue":"../node_modules/vue/dist/vue.runtime.esm.js","./components/genetator/FormGenerator.vue":"components/genetator/FormGenerator.vue","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js"}],"index.ts":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.runtime.esm.js","./components/genetator/FormGenerator.vue":"components/genetator/FormGenerator.vue","./components/boxToPasteMessage/BoxToPasteMessage.vue":"components/boxToPasteMessage/BoxToPasteMessage.vue","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js"}],"index.ts":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
@@ -9232,7 +9316,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63308" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55904" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

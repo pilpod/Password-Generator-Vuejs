@@ -56,5 +56,5 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-@use 'box-style';
+@use '../../sass/box-style';
 </style>
